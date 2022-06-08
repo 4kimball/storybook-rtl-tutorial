@@ -1,10 +1,16 @@
 import type { Story } from "@storybook/react";
 import type { ButtonProps } from "./Button";
+
+import { action } from "@storybook/addon-actions";
 import Button from "./Button";
 
 export default {
   component: Button,
   title: "Button",
+};
+
+const handleClick = () => {
+  console.log("clicked");
 };
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
@@ -27,9 +33,12 @@ Template.args = {
   text: "text",
 };
 
-export const DisabledButton = Template.bind({});
+export const DisabledButton: Story<ButtonProps> = (args) => (
+  <Button onClick={action("clicked")} {...args} />
+);
 DisabledButton.args = {
   variant: "contained",
   text: "disabled",
   disabled: true,
+  onClick: handleClick,
 };

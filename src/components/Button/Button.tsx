@@ -5,11 +5,17 @@ export interface ButtonProps {
   text: string;
   variant: "outlined" | "contained" | "text" | undefined;
   disabled?: boolean;
+  onClick: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ text, variant, disabled = false }) => {
+const Button: FC<ButtonProps> = ({
+  text,
+  variant,
+  disabled = false,
+  onClick,
+}) => {
   return (
-    <MuiButton variant={variant} disabled={disabled}>
+    <MuiButton variant={variant} disabled={disabled} onClick={onClick}>
       {text}
     </MuiButton>
   );
