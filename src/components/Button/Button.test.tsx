@@ -11,10 +11,11 @@ describe("Button", () => {
   });
 
   it("disabled button", async () => {
-    render(<DisabledButton />);
+    const handleClick = jest.fn();
+    render(<DisabledButton onClick={handleClick} />);
 
     const disabledButton = screen.getByText("disabled");
     fireEvent.click(disabledButton);
-    expect(disabledButton).toHaveAttribute("disabled");
+    expect(handleClick).toBeCalledTimes(0);
   });
 });

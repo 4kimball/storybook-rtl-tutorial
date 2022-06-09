@@ -33,9 +33,7 @@ Template.args = {
   text: "text",
 };
 
-export const DisabledButton: Story<ButtonProps> = (args) => (
-  <Button onClick={action("clicked")} {...args} />
-);
+export const DisabledButton = Template.bind({});
 DisabledButton.args = {
   variant: "contained",
   text: "disabled",
